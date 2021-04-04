@@ -1,0 +1,5 @@
+export db_host=localhost
+export db_port=8889
+export db_username=root
+export db_password=root
+export db_name=vethealth
