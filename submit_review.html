@@ -9,6 +9,8 @@
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
+    <link rel="icon" type="image/png" href="public/favicon.ico">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <nav>
@@ -33,33 +35,48 @@
 
 <div class="review-group">
     <h2>Submit a review</h2>
+    <label for="fname">Your name (If you wish to remain anonymous - simply type in anonymous):</label><br>
+    <input type="text" id="fname" name="fname"><br>
+    
     <form>
-        <table>
+        <table style="width:100%">
             <th>Professionalism</th>
             <th>Rating</th>
             <tr>
                 <td>Bedside Manner</td>
+                <td></td>
             </tr>
             <tr>
                 <td>Clarity of Information</td>
+                <td></td>
             </tr>
             <tr>
                 <td>Wait Time</td>
+                <td></td>
             </tr>
             <tr>
                 <td>Provider Coverage</td>
+                <td></td>
             </tr>
         </table>
     </form>
 </div>
 
-<form id="submit-form" action="search_results.html">
-    <div class="form-group">
+
+<form id="submit-form">
         <p>Tell us about your experience.</p>
         <textarea id="comments" class="input-textarea" name="comment" placeholder="Enter your review here..."></textarea>
-    </div>
-
-    <div class="form-group">
+        <label for="specialty">Select reason for visit</label>
+        <select name="specialties" id="specialties">  
+          <option value="Acupuncture">Acupuncture</option>
+          <option value="Backneck">Back and Neck</option>
+          <option value="Cardiology">Cardiology</option>
+          <option value="familymed">Family Medicine</option>
+          <option value="neurosurgery">Neurological Surgery</option>
+          <option value="pediatrics">Pediatrics</option>
+        </select>
+    </br>
+    <div id="submit-button">
         <button type="submit" id="submit" class="submit-button">Submit</button>
     </div>
 </form>
