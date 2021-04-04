@@ -1,91 +1,127 @@
 <!DOCTYPE html>
 
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Provider Search</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="SimpleStarRating.css" />
+</head>
 
-  <body>
+<body>
     <style>
-      .listing-number {
-        background-color: darkgray;
-        border-radius: 100%;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: black;
-        margin-top: 10px;
-      }
-
-      .provider-info {
-        margin-left: 15px;
-      }
-
-      .provider-address{
-          margin: 0px;
-          margin-top: 5px;
-          margin-bottom: 5px;
-          font-size: 13px;
-      }
-
-      .provider-name{
-          margin: 0px;
-          font-size: 14px;
-      }
-
-      .provider-name-rating{
-          display: flex;
-          flex-direction: row;
-      }
-
-      .search-result {
-        display: flex;
-        flex-direction: row;
-      }
-
-      #container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      #page-title {
-        font-size: 30px;
-        margin-top: 80px;
-      }
+        .listing-number {
+            background-color: darkgray;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: black;
+            margin-top: 10px;
+        }
+        
+        .provider-info {
+            margin-left: 15px;
+        }
+        
+        .provider-address {
+            margin: 0px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+        
+        .provider-name {
+            margin: 0px;
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .provider-name-rating {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .rating {
+            margin-left: 20px;
+        }
+        
+        .search-result {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #page-title {
+            font-size: 30px;
+            margin-top: 80px;
+        }
     </style>
     <div id="container">
-      <div>
-        <p id="page-title">
-          Healthcare providers for <b>Tricare</b> in <b>Florida</b>
-        </p>
-        <div class="search-result">
-          <div class="listing-number">1</div>
-          <div class="provider-info">
-            <div class="provider-name-rating">
-              <p class="provider-name">Florida Military Hospital</p>
+        <div>
+            <p id="page-title">
+                Healthcare providers for <b>Tricare</b> in <b>Florida</b>
+            </p>
+            <div id="search-results">
 
             </div>
-            <p class="provider-address">811 Batman Way, Florida 33213</p>
-            <a href="submit_review.html">
-              <input type="button" value="Leave a Review" />
-            </a>
-
-            <div>
-              <p><a href="view_reviews.html">See Reviews</a></p>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </body>
+    <script src="SimpleStarRating.js"></script>
+    <script>
+        async function getAndShowProviders() {
+            let searchResultsUnparsed = await fetch('/providers', {
+                "method": "GET"
+            });
+            let searchResults = await searchResultsUnparsed.json();
+            debugger;
+            let searchResultsElement = document.getElementById("search-results");
+
+            for (let searchResultIndex = 0; searchResultIndex < searchResults.length; searchResultIndex++) {
+                let searchResult = searchResults[searchResultIndex];
+
+                let overallRating = (searchResult.average_bedside_manner_rating + searchResult.average_insurance_coverage_rating + searchResult.average_clarity_rating) / 3;
+                searchResultsElement.insertAdjacentHTML('beforeend', `
+                <div class="search-result">
+                        <div class="listing-number">${searchResultIndex + 1}</div>
+                        <div class="provider-info">
+                            <div class="provider-name-rating">
+                                <p class="provider-name">${searchResult.name}</p>
+                                <span id="myRating${searchResult.id}" class="rating" data-stars="5" data-default-rating="${overallRating} || 0" disabled>
+
+                                </span>
+                            </div>
+                            <p class="provider-address">${searchResult.address}</p>
+                            <a href="submit_review.html">
+                                <input type="button" value="Leave a Review" />
+                            </a>
+
+                            <div>
+                                <p><a href="view_reviews.html">See Reviews</a></p>
+                            </div>
+                        </div>
+                    </div>`);
+
+                new SimpleStarRating(document.getElementById(`myRating${searchResult.id}`));
+            }
+        }
+
+        getAndShowProviders();
+    </script>
+</body>
+
+</html>
+
 </html>

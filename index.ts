@@ -43,6 +43,11 @@ app.get("/reviews", async (req, res) => {
   res.json(reviews);
 });
 
+app.get("/:file", async (req, res) => {
+  let fileName = req.params.file;
+  return res.sendFile(__dirname + "/" + fileName);
+});
+
 app.listen(process.env.PORT || 443, () => {
   console.log(`Running on port ${process.env.PORT || 443}`);
 });
