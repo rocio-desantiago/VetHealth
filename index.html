@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Military Healthcare Review</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
-    <link rel="icon" type="image/png" href="public/favicon.ico">
+    <meta charset="utf-8" />
+    <title>Provider Search</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.base.min.css"
+    />
+    <style>
+      mark {
+        background-color: green;
+        color: white;
+      }
+    </style>
   </head>
   <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-    <p>Hello Military Healthcare Review Team</p>
-    <ul>Rocio: Create HTML Pages</ul>
-    <ul>Randy: API & Backend</ul>
-    <ul>Jared: Excel data</ul>
-    <ul>Omar: HTML pages</ul>
-    
-    <script src="" async defer></script>
+    <h4>State Selection</h4>
+    <input class="awesomplete" data-list="Florida, Boston" />
+    <div class="form-group"></div>
+    <h4>Physician Specality</h4>
+    <select id="dropdown" name="role" class="form-control" required>
+      <option disabled selected value>Specality</option>
+      <option value="neurosurgery">Neurosurgery</option>
+      <option value="family medicine">Family Medicine</option>
+      <option value="dentist">Dentist</option>
+      <option value="optometrist">Optometrist</option>
+      <option value="cardiologist">Cardiologist</option>
+    </select>
+    <a href="search_results.html">
+      <button>Search Healthcare Providers</button>
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
+    <script></script>
   </body>
 </html>

@@ -5,15 +5,31 @@
     <title>Submit A Review</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
 </head>
 
-<div class=>
-    <!--Need to work on figuirng out how to implement the provider here from the other page-->
-    <h1>
+<nav>
+    <style>
+        nav{
+            height: 50px;
+            border-bottom: 2px solid #f5f5f5;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
 
-    </h1>
-</div>
+        #logo{
+            font-size: 20px;
+            color:black
+        }
+    </style>
+    <a href="index.html" id="logo">VetHealth</a>
+</nav>
 
 <div class="review-group">
     <h2>Submit a review</h2>
@@ -37,7 +53,7 @@
     </form>
 </div>
 
-<form id="submit-form">
+<form id="submit-form" action="search_results.html">
     <div class="form-group">
         <p>Tell us about your experience.</p>
         <textarea id="comments" class="input-textarea" name="comment" placeholder="Enter your review here..."></textarea>
