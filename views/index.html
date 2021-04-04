@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Provider Search</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.base.min.css"
+    />
+    <style>
+      mark {
+        background-color: green;
+        color: white;
+      }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Military Healthcare Review</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="public/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <h1>Military Healthcare Review</h1>
+
+    <label for="state">Choose a state:</label>
+      <select name="states" id="states">
+        <option value="florida">Florida</option>
+        <option value="georgia">Georgia</option>
+        <option value="missouri">Missouri</option>
+      </select>
+      <label for="insurance">Healthcare Provider</label>
+      <select name="insurancetypes" id="insurancetypes">
+        <option value="TPrime">TRICARE Prime</option>
+        <option value="TPrimeRemote">TRICARE Prime Remote</option>
+        <option value="TPrimeOverseas">TRICARE Prime Overseas</option>
+        <option value="TPrimeRemoteOverseas">TRICARE Prime Remote Overseas</option>
+        <option value="TSelect">TRICARE Select</option>
+        <option value="TSelectOverseas">TRICARE Select Overseas</option>
+        <option value="TForLife">TRICARE For Life</option>
+        <option value="TReserveSelect">TRICARE Reserve Select</option>
+        <option value="TRetiredReserve">TRICARE Retired Reserve</option>
+        <option value="TYoungAdult">TRICARE Young Adult</option>
+      </select>
+      <label for="specialty">Select reason for visit</label>
+      <select name="specialties" id="specialties">  
+        <option value="Acupuncture">Acupuncture</option>
+        <option value="Backneck">Back and Neck</option>
+        <option value="Cardiology">Cardiology</option>
+        <option value="familymed">Family Medicine</option>
+        <option value="neurosurgery">Neurological Surgery</option>
+        <option value="pediatrics">Pediatrics</option>
+      </select>
+    </br>
+    <a href="search_results.html">
+      <button type="button">
+        Find Healthcare Provider
+      </button>
+    </a>
+    <script src="" async defer></script>
+<!--
+<h4>State Selection</h4>
+    <input class="awesomplete" data-list="Florida, Boston" />
+    <div class="form-group"></div>
+    <h4>Physician Specality</h4>
+    <select id="dropdown" name="role" class="form-control" required>
+      <option disabled selected value>Specality</option>
+      <option value="neurosurgery">Neurosurgery</option>
+      <option value="family medicine">Family Medicine</option>
+      <option value="dentist">Dentist</option>
+      <option value="optometrist">Optometrist</option>
+      <option value="cardiologist">Cardiologist</option>
+    </select>
+    
+      <button>Search Healthcare Providers</button>
+    </a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.5/awesomplete.min.js"></script>
+    <script></script>
+-->
+  </body>
+</html>

@@ -23,15 +23,19 @@ class Review {
     clarityRating,
     waitTimeInMinutes,
     insuranceCoverageRating,
+    review
   }) {
     this.id = id;
     this.healthProviderId = healthProviderId;
     this.reviewerName = reviewerName;
     this.serviceReceived = serviceReceived;
-    this.bedsideMannerRating = this.validateRating(bedsideMannerRating) && bedsideMannerRating;
+    this.bedsideMannerRating =
+      this.validateRating(bedsideMannerRating) && bedsideMannerRating;
     this.clarityRating = this.validateRating(clarityRating) && clarityRating;
     this.waitTimeInMinutes = waitTimeInMinutes;
-    this.insuranceCoverageRating = this.validateRating(insuranceCoverageRating) && insuranceCoverageRating;
+    this.insuranceCoverageRating =
+      this.validateRating(insuranceCoverageRating) && insuranceCoverageRating;
+    this.review = review;
 
     for (const key of Object.keys(this)) {
       if (key == "id") {
@@ -82,6 +86,19 @@ class Review {
   public static getById(id) {
     let knexAdapter = new KnexAdapter();
     return knexAdapter.select(tableName, ["*"], { id: id });
+  }
+
+  static getReviewsByProviderId(providerId) {
+    let knexAdapter = new KnexAdapter();
+    return knexAdapter.rawWithResponseOnly(
+      `SELECT review.* 
+    FROM review, health_provider 
+    WHERE review.health_provider_id = health_provider.id
+    AND health_provider.id = :provider_id`,
+      {
+        provider_id: providerId,
+      }
+    );
   }
 }
 

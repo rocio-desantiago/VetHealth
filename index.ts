@@ -29,6 +29,12 @@ app.get("/providers/:id", async (req, res) => {
     res.json(healthCareProviders);
   });
 
+
+app.get("/providers/:providerId/reviews", async (req, res) => {
+  let reviews = await Review.getReviewsByProviderId(req.params.providerId);
+  return res.json(reviews);
+});
+
 app.post("/reviews", async (req, res) => {
   try {
     let review = await new Review(req.body).save();
@@ -43,9 +49,13 @@ app.get("/reviews", async (req, res) => {
   res.json(reviews);
 });
 
+app.get("/", async (req, res) => {
+  return res.sendFile(__dirname + "/views/" + "index.html");
+});
+
 app.get("/:file", async (req, res) => {
   let fileName = req.params.file;
-  return res.sendFile(__dirname + "/" + fileName);
+  return res.sendFile(__dirname + "/views/" + fileName);
 });
 
 app.listen(process.env.PORT || 443, () => {
